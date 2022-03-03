@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.thunder30.uberclone",
+      "package": "com.thunder30.uber_clone",
       "versionCode": 1
     },
     "web": {
