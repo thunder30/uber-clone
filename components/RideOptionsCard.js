@@ -5,15 +5,17 @@ import {
     TouchableOpacity,
     FlatList,
     Image,
-    Dimensions,
 } from 'react-native'
 import React, { useState } from 'react'
 import tw from 'twrnc'
 import { Icon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
+import 'intl'
+import 'intl/locale-data/jsonp/vi'
 
 import { selectTravelTimeInfomation } from '../slices/navSlice'
+import { Platform } from 'react-native'
 
 const data = [
     {
@@ -64,7 +66,7 @@ const RideOptionsCard = () => {
                     item,
                 }) => (
                     <TouchableOpacity
-                        style={tw`flex-row items-center justify-between px-10 ${
+                        style={tw`flex-row items-center justify-between px-6 ${
                             id === selected?.id && 'bg-gray-200'
                         }`}
                         onPress={() => setSelected(item)}

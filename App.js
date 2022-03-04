@@ -22,21 +22,14 @@ export default function App() {
                         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                         keyboardVerticalOffset={Platform.OS === 'ios' ? -10 : 0}
                     >
-                        <Navigator>
-                            <Screen
-                                name="HomeScreen"
-                                component={HomeScreen}
-                                options={{
-                                    headerShown: false,
-                                }}
-                            />
-                            <Screen
-                                name="MapScreen"
-                                component={MapScreen}
-                                options={{
-                                    headerShown: false,
-                                }}
-                            />
+                        <Navigator
+                            initialRouteName="HomeScreen"
+                            screenOptions={{
+                                headerShown: false,
+                            }}
+                        >
+                            <Screen name="HomeScreen" component={HomeScreen} />
+                            <Screen name="MapScreen" component={MapScreen} />
                         </Navigator>
                     </KeyboardAvoidingView>
                 </SafeAreaProvider>

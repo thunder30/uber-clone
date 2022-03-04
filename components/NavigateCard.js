@@ -9,15 +9,16 @@ import React from 'react'
 import tw from 'twrnc'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import { GOOGLE_MAPS_APIKEY } from '@env'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { Icon } from 'react-native-elements'
 
-import { setDestination } from '../slices/navSlice'
+import { setDestination, selectDestination } from '../slices/navSlice'
 import NavFavourites from './NavFavourites'
 
 const NavigateCard = () => {
     const dispatch = useDispatch()
+    const destination = useSelector(selectDestination)
     const navigation = useNavigation()
     return (
         <SafeAreaView style={tw`bg-white flex-1`}>
@@ -56,7 +57,10 @@ const NavigateCard = () => {
                 style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}
             >
                 <TouchableOpacity
-                    style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full`}
+                    disabled={!destination}
+                    style={tw`flex flex-row justify-between bg-black ${
+                        !destination && 'bg-gray-300'
+                    } w-24 px-4 py-3 rounded-full`}
                     onPress={() => navigation.navigate('RideOptionsCard')}
                 >
                     <Icon

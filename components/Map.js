@@ -19,12 +19,15 @@ const Map = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (origin && destination) {
-            // zoom and fit to markers
+        if (!origin || !destination) return
+
+        const timeOutId = setTimeout(() => {
             mapRef.current.fitToSuppliedMarkers(['origin', 'destination'], {
-                edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+                edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
             })
-        }
+        }, 500)
+
+        return () => clearTimeout(timeOutId)
     }, [origin, destination])
 
     useEffect(() => {
