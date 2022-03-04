@@ -1,0 +1,36 @@
+{
+    "cli": {
+        "version": ">= 0.34.0",
+        "requireCommit": true
+    },
+    "submit": {
+        "production": {
+            "android": {
+                "serviceAccountKeyPath": "./config/service-account-key.json",
+                "track": "internal"
+            }
+        }
+    },
+    "build": {
+        "development": {
+            "developmentClient": true,
+            "distribution": "internal"
+        },
+        "preview": {
+            "android": {
+                "buildType": "apk"
+            },
+
+            "distribution": "internal"
+        },
+        "preview2": {
+            "android": {
+                "gradleCommand": ":app:assembleRelease"
+            }
+        },
+        "preview3": {
+            "developmentClient": true
+        },
+        "production": {}
+    }
+}
